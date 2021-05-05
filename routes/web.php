@@ -14,5 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
-});
+    $fileName = "14042021-mariaFGil.jpg";
+    return view('index',[
+        "fileName" => $fileName
+    ]);
+})->name('index');
+
+Route::get('/download', function () {
+    return Storage::download('public/14042021-mariaFGil.jpg');
+})->name('download');
+
+/* Route::get('/view', function () {
+    $url = config('app.url').Storage::url('public/14042021-mariaFGil.jpg');
+    
+    return view('view',[
+        "url" => $url
+    ]);
+}); */
